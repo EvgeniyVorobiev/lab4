@@ -5,8 +5,7 @@ import java.util.Scanner;
 
 public class Main
 {
-    public static void main(String[] args)
-   {
+    public static void main(String[] args) throws InstantiationException, IllegalAccessException {
        System.out.println("Задание 1:");
        Scanner in = new Scanner(System.in);
        int[] arr = new int[]{12, 4, 5, 6, 34, 27};
@@ -50,34 +49,34 @@ public class Main
        Orange orange = new Orange();
        Orange orange1 = new Orange();
        Orange orange2 = new Orange();
-       Box appleBox = new Box();
-       Box orangeBox = new Box();
 
+       Box <Apple> appleBox = new Box<Apple>(apple1, apple2, apple);
+       Box <Orange> orangeBox = new Box<Orange>();
+       orangeBox.AddFruit(orange1);
+       /*//appleBox.AddFruit(orange);
        appleBox.AddFruit(apple);
        appleBox.AddFruit(apple1);
        appleBox.AddFruit(apple2);
-       appleBox.AddFruit(orange);
        orangeBox.AddFruit(orange1);
-       orangeBox.AddFruit(orange2);
-       orangeBox.AddFruit(orange2);
-       orangeBox.AddFruit(apple1);
+       orangeBox.AddFruit(new Orange());
+       //orangeBox.AddFruit(apple2);
        System.out.println("Вес коробки: " + appleBox.GetWeight());
        System.out.println("Вес коробки: " + orangeBox.GetWeight());
        if (appleBox.Compare(orangeBox)) System.out.println("Коробки весят одинаково");
        else System.out.println("У коробок разный вес");
-
-       Box box1 = new Box();
-       System.out.println("Вес коробки: " + box1.GetWeight());
-       orangeBox.AddFruitsToBox(box1);
-       System.out.println("Вес коробки: " + box1.GetWeight());
+       Box <Orange> box1 = new Box<Orange>();
+       System.out.println("Вес коробки: " + box1.GetWeight());*/
+       orangeBox.AddFruits(4);
+       /*System.out.println("Вес коробки: " + box1.GetWeight());
        System.out.println("Вес коробки: " + orangeBox.GetWeight());
-       appleBox.AddFruitsToBox(box1);
+       orangeBox.AddFruitsToBox(box1);
        appleBox.Print();
        System.out.println();
-       box1.Print();
+       box1.Print();*/
        System.out.println();
        orangeBox.Print();
-       System.out.println();
+       //System.out.println();
+       //appleBox.Print();
    }
 
    public static ArrayList<Integer> ArrToArrList(int [] arr)
@@ -89,4 +88,14 @@ public class Main
        }
        return arrayList;
    }
+
+    public static ArrayList<Fruit> FruitArrToArrList(Fruit [] arr)
+    {
+        ArrayList<Fruit> arrayList = new ArrayList<Fruit>();
+        for(int i = 0; i < arr.length; i++)
+        {
+            arrayList.add(arr[i]);
+        }
+        return arrayList;
+    }
 }
